@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfterClick - Manual Email Fallback</title>
+    <meta name="description" content="Emergency manual email fallback for the AfterClick Revenue Map order.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../assets/brand-tokens.css">
+    <link rel="stylesheet" href="../../assets/legal.css">
+    <script src="../../assets/fiscal.js" defer></script>
+    <script src="../../assets/consent.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a class="brand-link" href="../../index.html">
+          <img src="../../assets/afterclick-mark.svg" alt="" aria-hidden="true">
+          <span>AfterClick</span>
+        </a>
+        <div class="nav-links">
+          <a class="button secondary" href="../start/">Back to billing check</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="simple-main">
+      <div class="wrap">
+        <section class="panel simple-panel">
+          <div class="eyebrow">Manual fallback</div>
+          <h1>Use this only if checkout is unavailable.</h1>
+          <p class="lead">The normal AfterClick path is Stripe Checkout. This page is kept as an emergency email fallback if the payment flow is unavailable during setup or testing.</p>
+
+          <div class="result-box score-high" id="routeBox">
+            <div class="mono">Selected billing route</div>
+            <p style="margin:10px 0 0;">Billing country and buyer type will be confirmed before checkout is finalized.</p>
+          </div>
+
+          <div class="grid-2" style="margin-top:24px;align-items:stretch;">
+            <div class="card">
+            <h3>Fallback path</h3>
+              <ul class="check-list">
+                <li>We prepare the correct payment route from your billing details.</li>
+                <li>You receive the secure payment link for the order.</li>
+                <li>After payment, you complete the report intake.</li>
+                <li>Delivery starts after intake is complete.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>What not to send</h3>
+              <ul class="check-list">
+                <li>No passwords or admin access.</li>
+                <li>No contact lists or customer databases.</li>
+                <li>No private dashboards unless explicitly requested later.</li>
+                <li>No sensitive personal or financial data.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;">
+            <a class="button primary" id="emailLink" href="mailto:support@after-click.com?subject=AfterClick%20Revenue%20Map%20order">Continue order by email</a>
+            <a class="button secondary" href="../start/">Back to billing check</a>
+          </div>
+          <p class="fine-print">Expected delivery window after payment and complete intake: 48-72 hours.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="legal-footer">
+      <div class="legal-footer-inner">
+        <div class="legal-brand">AfterClick - Know what to fix after the click.</div>
+        <div class="legal-links">
+          <a href="../../privacy-policy/">Privacy Policy</a>
+          <a href="../../cookie-policy/">Cookie Policy</a>
+          <button type="button" data-cookie-preferences>Cookie Preferences</button>
+        </div>
+        <div class="legal-admin">
+          <span>P.IVA IT16566571002</span>
+          <a href="mailto:support@after-click.com">support@after-click.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        function getParam(name) {
+          return new URLSearchParams(window.location.search).get(name) || "";
+        }
+
+        function htmlEscape(value) {
+          return String(value).replace(/[&<>"']/g, function (char) {
+            return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char];
+          });
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+          var country = getParam("billingCountry");
+          var buyer = getParam("buyerType");
+          var routeBox = document.getElementById("routeBox");
+          var emailLink = document.getElementById("emailLink");
+          var route = "";
+
+          if (country && buyer && window.AfterClickFiscal) {
+            route = window.AfterClickFiscal.classifyPreliminary(country, buyer);
+            routeBox.innerHTML = '<div class="mono">Selected billing route</div><p style="margin:10px 0 0;"><strong>' + htmlEscape(country) + ' / ' + htmlEscape(buyer) + '</strong><br>' + window.AfterClickFiscal.getPublicInvoiceNote(route) + '</p>';
+          }
+
+          var body = [
+            "Hi AfterClick,",
+            "",
+            "I am ready to complete my AfterClick Revenue Map order.",
+            "",
+            "Store URL:",
+            "Billing country: " + country,
+            "Buyer type: " + buyer,
+            "",
+            "Thanks"
+          ].join("\\n");
+          emailLink.href = "mailto:support@after-click.com?subject=AfterClick%20Revenue%20Map%20order&body=" + encodeURIComponent(body);
+        });
+      })();
+    </script>
+  </body>
+</html>

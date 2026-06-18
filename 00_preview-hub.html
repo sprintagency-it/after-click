@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>AfterClick Funnel Preview Hub</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/brand-tokens.css">
+    <style>
+      .hub-main {
+        padding: 64px 0;
+      }
+
+      .hub-head {
+        max-width: 820px;
+        margin-bottom: 36px;
+      }
+
+      .hub-section {
+        margin-top: 34px;
+      }
+
+      .hub-section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 16px;
+      }
+
+      .hub-section-head h2 {
+        margin: 0;
+        font-size: clamp(26px, 3vw, 36px);
+      }
+
+      .flow-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 16px;
+        border: 1px solid var(--ac-line);
+        border-radius: var(--ac-radius-md);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 14px 44px rgba(16, 20, 23, 0.06);
+      }
+
+      .flow-step {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid var(--ac-line);
+        border-radius: 999px;
+        background: var(--ac-surface);
+        color: var(--ac-ink-soft);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .flow-arrow {
+        color: var(--ac-green-dark);
+        font-weight: 900;
+      }
+
+      .hub-card {
+        display: flex;
+        min-height: 214px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 22px;
+        border: 1px solid var(--ac-line);
+        border-radius: var(--ac-radius-md);
+        background: rgba(255, 255, 255, 0.84);
+        color: inherit;
+        text-decoration: none;
+        box-shadow: 0 14px 44px rgba(16, 20, 23, 0.08);
+      }
+
+      .hub-card:hover,
+      .hub-card:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .hub-card p {
+        margin-bottom: 0;
+      }
+
+      .hub-card-top {
+        display: grid;
+        gap: 10px;
+      }
+
+      .badge {
+        display: inline-flex;
+        margin-bottom: 14px;
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: var(--ac-high-bg);
+        color: var(--ac-green-dark);
+        font-family: var(--ac-font-mono);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 5px 8px;
+        border: 1px solid var(--ac-line);
+        border-radius: 999px;
+        font-family: var(--ac-font-mono);
+        font-size: 10px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .status-active {
+        border-color: var(--ac-high-border);
+        background: var(--ac-high-bg);
+        color: var(--ac-green-dark);
+      }
+
+      .status-prepared {
+        border-color: var(--ac-mid-border);
+        background: var(--ac-mid-bg);
+        color: #966c14;
+      }
+
+      .status-parked {
+        border-color: var(--ac-low-border);
+        background: var(--ac-low-bg);
+        color: var(--ac-red);
+      }
+
+      .status-support {
+        border-color: var(--ac-line);
+        background: var(--ac-paper-warm);
+        color: var(--ac-ink-soft);
+      }
+
+      code {
+        display: block;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        color: var(--ac-ink);
+        font-weight: 800;
+      }
+
+      @media (max-width: 760px) {
+        .hub-section-head {
+          display: grid;
+        }
+
+        .flow-strip {
+          display: grid;
+        }
+
+        .flow-arrow {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hub-main">
+      <div class="wrap">
+        <div class="hub-head">
+          <div class="eyebrow">Local review links</div>
+          <h1>AfterClick Funnel Preview Hub</h1>
+          <p class="lead">Open these local pages to review the validation funnel before any deploy or payment connection. The links point to the files in this folder.</p>
+        </div>
+
+        <section class="hub-section" aria-labelledby="active-flow-title">
+          <div class="hub-section-head">
+            <h2 id="active-flow-title">Active public flow</h2>
+            <span class="status-pill status-active">Active</span>
+          </div>
+          <div class="flow-strip" aria-label="Current active AfterClick flow">
+            <span class="flow-step">Landing</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Sample Map optional</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Checkout start</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Stripe Checkout</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Checkout success</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Tally intake</span>
+            <span class="flow-arrow">-></span>
+            <span class="flow-step">Thank-you</span>
+          </div>
+        </section>
+
+        <section class="hub-section" aria-labelledby="active-pages-title">
+          <div class="hub-section-head">
+            <h2 id="active-pages-title">Active / review now</h2>
+          </div>
+        <div class="grid-3">
+          <a class="hub-card" href="index.html">
+            <div class="hub-card-top">
+              <span class="badge">Main</span>
+              <h3>Landing page</h3>
+              <p>Primary offer page with interactive report preview, 99% -> 1% bridge, sample proof, pricing, fit, FAQ and CTA.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active</span><span class="status-pill status-support">Public</span></div>
+          </a>
+
+          <a class="hub-card" href="sample-map/">
+            <div class="hub-card-top">
+              <span class="badge">Proof</span>
+              <h3>Sample Map</h3>
+              <p>Public-safe sample Revenue Map with neutral ecommerce mock store, score, leaks, annotations and roadmap.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active</span><span class="status-pill status-support">Public</span></div>
+          </a>
+
+          <a class="hub-card" href="checkout/start/">
+            <div class="hub-card-top">
+              <span class="badge">Checkout</span>
+              <h3>Checkout start</h3>
+              <p>Billing country and buyer type pre-check before the dynamic Stripe Checkout Session.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active</span><span class="status-pill status-support">Noindex</span></div>
+          </a>
+
+          <a class="hub-card" href="checkout/success/?session_id=cs_test_preview">
+            <div class="hub-card-top">
+              <span class="badge">Stripe</span>
+              <h3>Checkout success</h3>
+              <p>Post-payment confirmation with Tally intake handoff and purchase event guard.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active after Stripe</span><span class="status-pill status-support">Noindex</span></div>
+          </a>
+
+          <a class="hub-card" href="thank-you/">
+            <div class="hub-card-top">
+              <span class="badge">Intake</span>
+              <h3>Thank-you page</h3>
+              <p>Post-intake confirmation and optional Fix Sprint positioning.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active after intake</span><span class="status-pill status-support">Noindex</span></div>
+          </a>
+
+          <a class="hub-card" href="privacy-policy/">
+            <div class="hub-card-top">
+              <span class="badge">Legal</span>
+              <h3>Privacy Policy</h3>
+              <p>Review-ready policy page with controller and data use outline.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active</span><span class="status-pill status-support">Draft legal</span></div>
+          </a>
+
+          <a class="hub-card" href="cookie-policy/">
+            <div class="hub-card-top">
+              <span class="badge">Legal</span>
+              <h3>Cookie Policy</h3>
+              <p>Cookie categories, consent and measurement explanation.</p>
+            </div>
+            <div class="status-row"><span class="status-pill status-active">Active</span><span class="status-pill status-support">Draft legal</span></div>
+          </a>
+        </div>
+        </section>
+
+        <section class="hub-section" aria-labelledby="prepared-pages-title">
+          <div class="hub-section-head">
+            <h2 id="prepared-pages-title">Prepared technical endpoints</h2>
+            <span class="status-pill status-prepared">Functions</span>
+          </div>
+          <div class="grid-3">
+            <a class="hub-card" href="cloudflare-env.example">
+              <div class="hub-card-top">
+                <span class="badge">Env</span>
+                <h3>Cloudflare env example</h3>
+                <p>Names for Stripe, Sheet webhook, Resend and Tally configuration. Contains placeholders only.</p>
+              </div>
+              <div class="status-row"><span class="status-pill status-prepared">Deploy setup</span><span class="status-pill status-support">No secrets</span></div>
+            </a>
+            <a class="hub-card" href="checkout/request/?billingCountry=US&buyerType=business">
+              <div class="hub-card-top">
+                <span class="badge">Fallback</span>
+                <h3>Manual email fallback</h3>
+                <p>Old temporary email route kept as emergency fallback only. It is not part of the active public checkout path.</p>
+              </div>
+              <div class="status-row"><span class="status-pill status-prepared">Fallback</span><span class="status-pill status-parked">Not active</span></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="hub-section" aria-labelledby="parked-pages-title">
+          <div class="hub-section-head">
+            <h2 id="parked-pages-title">Parked / disabled from public flow</h2>
+            <span class="status-pill status-parked">Disabled</span>
+          </div>
+          <div class="grid-3">
+            <a class="hub-card" href="leak-score/">
+              <div class="hub-card-top">
+                <span class="badge">Parked</span>
+                <h3>Optional Leak Score</h3>
+                <p>Diagnostic asset kept for a future lead magnet or self-check. It is not linked from the public purchase flow.</p>
+              </div>
+              <div class="status-row"><span class="status-pill status-parked">Disabled flow</span><span class="status-pill status-support">Future</span></div>
+            </a>
+          </div>
+        </section>
+
+        <div class="card" style="margin-top:26px;">
+          <p class="muted" style="margin:0;">Review note:</p>
+          <code>Open this hub from the local funnel folder before deploy; keep it noindex after deploy.</code>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

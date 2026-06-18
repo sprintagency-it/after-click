@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfterClick - Intake Received</title>
+    <meta name="description" content="Your AfterClick Revenue Map intake has been received.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/brand-tokens.css">
+    <link rel="stylesheet" href="../assets/legal.css">
+    <script>
+      window.AFTERCLICK_META_PIXEL_ID = "1677975296859006";
+      window.AFTERCLICK_PAGE_EVENTS = [];
+      if (new URLSearchParams(window.location.search).get("intake") === "submitted") {
+        window.AFTERCLICK_PAGE_EVENTS.push({
+          name: "Lead",
+          params: {
+            content_name: "AfterClick Intake Received",
+            content_category: "after_click_diagnostics",
+            content_ids: ["afterclick_intake"],
+            content_type: "lead_form",
+            value: 0,
+            currency: "USD"
+          }
+        });
+      }
+    </script>
+    <script src="../assets/consent.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a class="brand-link" href="../index.html">
+          <img src="../assets/afterclick-mark.svg" alt="" aria-hidden="true">
+          <span>AfterClick</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="simple-main">
+      <div class="wrap grid-2">
+        <section class="panel simple-panel">
+          <div class="eyebrow">Request received</div>
+          <h1>Your AfterClick context is in.</h1>
+          <p class="lead">Thanks for sending your store context. We will review the materials and use them to prepare your Revenue Map.</p>
+          <p><strong>Current expected delivery window:</strong> 48-72 hours after payment and complete intake.</p>
+          <p>If we need clarification before starting, we will reply to the email you used in the request.</p>
+          <p class="fine-print">If you accidentally submitted passwords, private customer data, contact lists, private dashboards or sensitive information, reply to the confirmation email and ask us to delete it.</p>
+        </section>
+
+        <aside class="panel simple-panel">
+          <div class="eyebrow">Potential next step</div>
+          <h2>Fix Sprint may be scoped after the map.</h2>
+          <p class="muted">If the report shows a cluster of fixes that can be implemented cleanly, we may suggest a separate AfterClick Fix Sprint. The sprint is optional, scoped and separate from the Revenue Map.</p>
+          <ul class="check-list">
+            <li>PDP and offer sprint.</li>
+            <li>Landing/message match sprint.</li>
+            <li>Cart and recovery sprint.</li>
+            <li>Creative angle and test backlog sprint.</li>
+          </ul>
+          <a class="button secondary panel-action" href="../index.html">Back to home page</a>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="legal-footer">
+      <div class="legal-footer-inner">
+        <div class="legal-brand">AfterClick - Know what to fix after the click.</div>
+        <div class="legal-links">
+          <a href="../privacy-policy/">Privacy Policy</a>
+          <a href="../cookie-policy/">Cookie Policy</a>
+          <button type="button" data-cookie-preferences>Cookie Preferences</button>
+        </div>
+        <div class="legal-admin">
+          <span>P.IVA IT16566571002</span>
+          <a href="mailto:support@after-click.com">support@after-click.com</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

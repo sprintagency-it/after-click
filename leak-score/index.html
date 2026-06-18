@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfterClick Leak Score - Check your fit</title>
+    <meta name="description" content="Check whether your ecommerce store is a fit for an AfterClick Revenue Map.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/brand-tokens.css">
+    <link rel="stylesheet" href="../assets/legal.css">
+    <script>
+      window.AFTERCLICK_META_PIXEL_ID = "1677975296859006";
+      window.AFTERCLICK_PAGE_EVENTS = [{
+        name: "ViewContent",
+        params: {
+          content_name: "AfterClick Leak Score",
+          content_category: "after_click_diagnostics",
+          content_ids: ["afterclick_leak_score"],
+          content_type: "diagnostic",
+          value: 0,
+          currency: "USD"
+        }
+      }];
+    </script>
+    <script src="../assets/consent.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a class="brand-link" href="../index.html">
+          <img src="../assets/afterclick-mark.svg" alt="" aria-hidden="true">
+          <span>AfterClick</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#receive">What you receive</a>
+          <a class="button secondary" href="../index.html">Back to landing</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-hero">
+      <div class="wrap grid-2">
+        <section>
+          <div class="eyebrow">Fit check</div>
+          <h1>Check if your store is ready for a Revenue Map.</h1>
+          <p class="lead">Answer a few questions about your store, traffic and implementation capacity. The goal is to avoid selling you a report if there is not enough after-click system to diagnose yet.</p>
+          <div class="card" style="margin-top:24px;">
+            <h3>Fit logic</h3>
+            <p class="muted">Best fit means real products, visible proof, traffic or paid traffic intent, AOV above $40 and ability to implement fixes in the next 7-30 days.</p>
+          </div>
+        </section>
+
+        <section class="panel form-card">
+          <form id="fitForm">
+            <div class="field">
+              <label for="storeUrl">Store URL</label>
+              <input id="storeUrl" name="storeUrl" type="url" placeholder="https://yourstore.com" required>
+            </div>
+
+            <div class="field">
+              <label for="platform">Ecommerce platform</label>
+              <select id="platform" name="platform" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="shopify">Shopify</option>
+                <option value="shopify_like">Shopify-like DTC setup</option>
+                <option value="woocommerce">WooCommerce</option>
+                <option value="bigcommerce">BigCommerce</option>
+                <option value="custom">Custom ecommerce</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="traffic">Are you currently running paid traffic?</label>
+              <select id="traffic" name="traffic" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="yes">Yes</option>
+                <option value="soon">No, but launching in 30-60 days</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="channel">Main paid channel</label>
+              <select id="channel" name="channel" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="meta">Meta</option>
+                <option value="tiktok">TikTok</option>
+                <option value="google">Google</option>
+                <option value="creators">Creators / affiliates</option>
+                <option value="other">Other</option>
+                <option value="not_sure">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="aov">Approximate AOV</label>
+              <select id="aov" name="aov" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="under_40">Under $40</option>
+                <option value="40_75">$40-75</option>
+                <option value="75_150">$75-150</option>
+                <option value="150_plus">$150+</option>
+                <option value="not_sure">Not sure</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="concern">Biggest concern</label>
+              <select id="concern" name="concern" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="ads">Ads are not converting</option>
+                <option value="pdp">Product page clarity</option>
+                <option value="cart">Cart or checkout friction</option>
+                <option value="email">Email/SMS recovery</option>
+                <option value="tracking">Tracking or profit clarity</option>
+                <option value="no_idea">Not sure what is leaking</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="implementation">Can you implement fixes?</label>
+              <select id="implementation" name="implementation" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="in_house">Yes, in-house</option>
+                <option value="freelancer">Yes, with a freelancer/dev</option>
+                <option value="need_help">Need help implementing</option>
+                <option value="not_sure">Not sure</option>
+                <option value="cannot">No implementation capacity</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="category">Category risk</label>
+              <select id="category" name="category" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="none">None of these</option>
+                <option value="supplements">Supplements / strong health claims</option>
+                <option value="medical">Medical claims</option>
+                <option value="financial">Financial claims</option>
+                <option value="adult">Adult or restricted category</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required>
+            </div>
+
+            <button class="button primary" type="submit">See your fit</button>
+          </form>
+
+          <div id="resultBox" class="result-box" hidden>
+            <div class="mono" id="resultLabel"></div>
+            <h3 id="resultTitle" style="margin-top:10px;"></h3>
+            <p id="resultBody" class="muted"></p>
+            <div id="resultAction"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="legal-footer">
+      <div class="legal-footer-inner">
+        <div class="legal-brand">AfterClick - Know what to fix after the click.</div>
+        <div class="legal-links">
+          <a href="../privacy-policy/">Privacy Policy</a>
+          <a href="../cookie-policy/">Cookie Policy</a>
+          <button type="button" data-cookie-preferences>Cookie Preferences</button>
+        </div>
+        <div class="legal-admin">
+          <span>P.IVA IT16566571002</span>
+          <a href="mailto:support@after-click.com">support@after-click.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var form = document.getElementById("fitForm");
+        var resultBox = document.getElementById("resultBox");
+        var resultLabel = document.getElementById("resultLabel");
+        var resultTitle = document.getElementById("resultTitle");
+        var resultBody = document.getElementById("resultBody");
+        var resultAction = document.getElementById("resultAction");
+
+        function value(name) {
+          return form.elements[name].value;
+        }
+
+        function setResult(type, title, body, actionHtml) {
+          resultBox.hidden = false;
+          resultBox.className = "result-box " + (type === "Qualified" ? "score-high" : type === "Borderline" ? "score-mid" : "score-low");
+          resultLabel.textContent = type;
+          resultTitle.textContent = title;
+          resultBody.textContent = body;
+          resultAction.innerHTML = actionHtml || "";
+          resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var score = 0;
+          var hardReject = false;
+
+          if (value("platform") === "shopify" || value("platform") === "shopify_like") score += 2;
+          else if (value("platform") === "woocommerce" || value("platform") === "bigcommerce" || value("platform") === "custom") score += 1;
+
+          if (value("traffic") === "yes") score += 2;
+          else if (value("traffic") === "soon") score += 1;
+
+          if (value("aov") === "40_75" || value("aov") === "75_150" || value("aov") === "150_plus") score += 2;
+          else if (value("aov") === "not_sure") score += 1;
+
+          if (value("implementation") === "in_house" || value("implementation") === "freelancer" || value("implementation") === "need_help") score += 2;
+          else if (value("implementation") === "not_sure") score += 1;
+
+          if (value("category") !== "none") hardReject = true;
+          if (value("traffic") === "no") hardReject = true;
+          if (value("implementation") === "cannot") hardReject = true;
+
+          if (hardReject) {
+            setResult(
+              "Not a fit",
+              "This may not be the right report for your store yet.",
+              "The first Revenue Map is intentionally narrow. It works best when there is a public ecommerce journey, traffic or paid intent and a safe category to review.",
+              '<a class="button secondary" href="../index.html#fit">Review the fit criteria</a>'
+            );
+            return;
+          }
+
+          if (score >= 7) {
+            setResult(
+              "Qualified",
+              "Your store looks like a strong fit.",
+              "The next step is to order the Revenue Map and send the context needed for a useful diagnosis after payment.",
+              '<a class="button primary" href="../checkout/start/">Continue to order</a>'
+            );
+            return;
+          }
+
+          setResult(
+            "Borderline",
+            "This may still be worth reviewing, with clear scope.",
+            "Your store has enough signal to consider a Revenue Map. If you want a direct diagnosis, you can order the map and submit context after payment.",
+            '<a class="button primary" href="../checkout/start/">Continue to order</a>'
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>

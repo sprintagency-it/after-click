@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+Sitemap: https://after-click.com/sitemap.xml

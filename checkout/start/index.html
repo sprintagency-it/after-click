@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfterClick - Checkout Start</title>
+    <meta name="description" content="Start checkout for the AfterClick Revenue Map.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../assets/brand-tokens.css">
+    <link rel="stylesheet" href="../../assets/legal.css">
+    <script>
+      window.AFTERCLICK_META_PIXEL_ID = "1677975296859006";
+      window.AFTERCLICK_PAGE_EVENTS = [{
+        name: "InitiateCheckout",
+        params: {
+          content_name: "AfterClick Revenue Map",
+          content_category: "after_click_diagnostics",
+          content_ids: ["afterclick_revenue_map_299"],
+          content_type: "product",
+          value: 299,
+          currency: "USD"
+        }
+      }];
+    </script>
+    <script src="../../assets/fiscal.js" defer></script>
+    <script src="../../assets/consent.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a class="brand-link" href="../../index.html">
+          <img src="../../assets/afterclick-mark.svg" alt="" aria-hidden="true">
+          <span>AfterClick</span>
+        </a>
+        <div class="nav-links">
+          <a class="button secondary" href="../../index.html#pricing">Back to offer</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="simple-main">
+      <div class="wrap grid-2">
+        <section>
+          <div class="eyebrow">Checkout start</div>
+          <h1>Start your AfterClick Revenue Map order.</h1>
+          <p class="lead">Choose your billing country and whether you are buying personally or as a business. This prepares the correct payment and invoice route before the payment step.</p>
+          <div class="card" style="margin-top:24px;">
+            <h3>AfterClick Revenue Map</h3>
+            <div class="price-line"><strong>$299</strong><span class="muted">founder price</span></div>
+            <ul class="check-list">
+              <li>Revenue Leak Score.</li>
+              <li>5 biggest after-click leaks.</li>
+              <li>First 3 actions and 7-day roadmap.</li>
+              <li>Private report delivery within 48-72h after intake.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel form-card">
+          <form id="billingForm" action="/api/checkout/session" method="post">
+            <div class="field">
+              <label for="billingCountry">Billing country</label>
+              <select id="billingCountry" name="billingCountry" required>
+                <option value="" selected disabled>Select your billing country</option>
+                <optgroup label="Common">
+                  <option value="US">United States (US)</option>
+                  <option value="GB">United Kingdom (GB)</option>
+                  <option value="CA">Canada (CA)</option>
+                  <option value="AU">Australia (AU)</option>
+                  <option value="IT">Italy (IT)</option>
+                  <option value="DE">Germany (DE)</option>
+                  <option value="FR">France (FR)</option>
+                  <option value="ES">Spain (ES)</option>
+                  <option value="NL">Netherlands (NL)</option>
+                  <option value="BE">Belgium (BE)</option>
+                  <option value="SE">Sweden (SE)</option>
+                  <option value="CH">Switzerland (CH)</option>
+                </optgroup>
+                <optgroup label="Other regions">
+                  <option value="AT">Austria (AT)</option>
+                  <option value="DK">Denmark (DK)</option>
+                  <option value="FI">Finland (FI)</option>
+                  <option value="IE">Ireland (IE)</option>
+                  <option value="PT">Portugal (PT)</option>
+                  <option value="PL">Poland (PL)</option>
+                  <option value="RO">Romania (RO)</option>
+                  <option value="CZ">Czech Republic (CZ)</option>
+                  <option value="NO">Norway (NO)</option>
+                  <option value="NZ">New Zealand (NZ)</option>
+                  <option value="SG">Singapore (SG)</option>
+                  <option value="AE">United Arab Emirates (AE)</option>
+                  <option value="BR">Brazil (BR)</option>
+                  <option value="MX">Mexico (MX)</option>
+                  <option value="IN">India (IN)</option>
+                  <option value="JP">Japan (JP)</option>
+                  <option value="ZA">South Africa (ZA)</option>
+                  <option value="SM">San Marino (SM)</option>
+                </optgroup>
+              </select>
+              <p class="fine-print">The payment step will collect name, email, billing address and payment details.</p>
+            </div>
+
+            <div class="field">
+              <div class="label">Buyer type</div>
+              <div class="choice-grid">
+                <label class="choice">
+                  <input type="radio" name="buyerType" value="individual" required>
+                  <span><strong>Individual</strong><br><span class="fine-print">Buying personally.</span></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="buyerType" value="business" required>
+                  <span><strong>Business / professional</strong><br><span class="fine-print">Buying as a company, freelancer or professional activity.</span></span>
+                </label>
+              </div>
+            </div>
+
+            <div id="invoiceNote" class="result-box" hidden></div>
+            <button class="button primary" type="submit">Continue to payment</button>
+          </form>
+          <p class="fine-print">Every paid order will use the billing details entered during the secure Stripe payment step for invoice records.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="legal-footer">
+      <div class="legal-footer-inner">
+        <div class="legal-brand">AfterClick - Know what to fix after the click.</div>
+        <div class="legal-links">
+          <a href="../../privacy-policy/">Privacy Policy</a>
+          <a href="../../cookie-policy/">Cookie Policy</a>
+          <button type="button" data-cookie-preferences>Cookie Preferences</button>
+        </div>
+        <div class="legal-admin">
+          <span>P.IVA IT16566571002</span>
+          <a href="mailto:support@after-click.com">support@after-click.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var form = document.getElementById("billingForm");
+        var note = document.getElementById("invoiceNote");
+
+        function updateNote() {
+          var country = form.elements.billingCountry.value;
+          var buyer = form.elements.buyerType.value;
+          if (!country || !buyer || !window.AfterClickFiscal) {
+            note.hidden = true;
+            return;
+          }
+          var invoiceCase = window.AfterClickFiscal.classifyPreliminary(country, buyer);
+          note.hidden = false;
+          note.className = invoiceCase === "SAN_MARINO_MANUAL_REVIEW" ? "result-box score-mid" : "result-box score-high";
+          note.innerHTML = '<div class="mono">Billing route</div><p style="margin:10px 0 0;">' + window.AfterClickFiscal.getPublicInvoiceNote(invoiceCase) + '</p>';
+        }
+
+        form.addEventListener("change", updateNote);
+      })();
+    </script>
+  </body>
+</html>

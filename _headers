@@ -1,0 +1,14 @@
+/00_preview-hub.html
+  X-Robots-Tag: noindex, nofollow
+
+/checkout/*
+  X-Robots-Tag: noindex, follow
+
+/thank-you/*
+  X-Robots-Tag: noindex, follow
+
+/leak-score/*
+  X-Robots-Tag: noindex, follow
+
+/api/*
+  X-Robots-Tag: noindex, nofollow

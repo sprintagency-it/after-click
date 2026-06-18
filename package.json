@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "check": "node tools/check-funnel.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {}
+}

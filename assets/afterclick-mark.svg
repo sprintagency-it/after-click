@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">AfterClick mark</title>
+  <desc id="desc">Compact path and gap mark for AfterClick.</desc>
+  <rect width="256" height="256" rx="54" fill="#101417"/>
+  <path d="M56 158C82 158 86 109 112 109C136 109 140 133 160 133C181 133 185 101 202 96" fill="none" stroke="#F7F8F5" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="56" cy="158" r="13" fill="#F7F8F5"/>
+  <circle cx="202" cy="96" r="13" fill="#2FBF71"/>
+</svg>

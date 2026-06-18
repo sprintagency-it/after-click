@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfterClick - Payment Received</title>
+    <meta name="description" content="Your AfterClick Revenue Map payment has been received.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../assets/brand-tokens.css">
+    <link rel="stylesheet" href="../../assets/legal.css">
+    <script>
+      window.AFTERCLICK_META_PIXEL_ID = "1677975296859006";
+      window.AFTERCLICK_PAGE_EVENTS = [];
+      if (new URLSearchParams(window.location.search).get("session_id")) {
+        window.AFTERCLICK_PAGE_EVENTS.push({
+          name: "Purchase",
+          params: {
+            content_name: "AfterClick Revenue Map",
+            content_category: "after_click_diagnostics",
+            content_ids: ["afterclick_revenue_map_299"],
+            content_type: "product",
+            value: 299,
+            currency: "USD"
+          }
+        });
+      }
+    </script>
+    <script src="../../assets/consent.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a class="brand-link" href="../../index.html">
+          <img src="../../assets/afterclick-mark.svg" alt="" aria-hidden="true">
+          <span>AfterClick</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="simple-main">
+      <div class="wrap">
+        <section class="panel simple-panel">
+          <div class="eyebrow">Payment received</div>
+          <h1>Now send the context for your Revenue Map.</h1>
+          <p class="lead">We received the payment step. To produce a useful diagnosis, we still need your store URL, primary product, current offer, traffic source, ad angle and implementation constraints.</p>
+
+          <div class="result-box score-high">
+            <div class="mono">Required next step</div>
+            <p style="margin:10px 0 0;">Complete the intake with the same email used for payment. Delivery timing starts after the intake has enough context.</p>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;">
+            <a class="button primary" id="intakeLink" href="https://tally.so/r/2EVX9V?product=afterclick_revenue_map&price_id=price_1TjhLmEbWnBWRyMCQHDtMpVi&source=checkout_success">Complete intake</a>
+            <a class="button secondary" href="../../index.html">Back to home page</a>
+          </div>
+          <p class="fine-print">Do not submit passwords, admin access, customer lists, private dashboards or sensitive personal data.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="legal-footer">
+      <div class="legal-footer-inner">
+        <div class="legal-brand">AfterClick - Know what to fix after the click.</div>
+        <div class="legal-links">
+          <a href="../../privacy-policy/">Privacy Policy</a>
+          <a href="../../cookie-policy/">Cookie Policy</a>
+          <button type="button" data-cookie-preferences>Cookie Preferences</button>
+        </div>
+        <div class="legal-admin">
+          <span>P.IVA IT16566571002</span>
+          <a href="mailto:support@after-click.com">support@after-click.com</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var intake = new URL("https://tally.so/r/2EVX9V");
+        var sessionId = params.get("session_id") || "";
+        var paymentEmail = params.get("payment_email") || params.get("customer_email") || "";
+
+        if (sessionId) {
+          intake.searchParams.set("stripe_session_id", sessionId);
+        }
+        if (paymentEmail) {
+          intake.searchParams.set("payment_email", paymentEmail);
+        }
+        intake.searchParams.set("product", "afterclick_revenue_map");
+        intake.searchParams.set("price_id", "price_1TjhLmEbWnBWRyMCQHDtMpVi");
+        intake.searchParams.set("source", "checkout_success");
+
+        var link = document.getElementById("intakeLink");
+        if (link) {
+          link.href = intake.toString();
+        }
+      })();
+    </script>
+  </body>
+</html>

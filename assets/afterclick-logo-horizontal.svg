@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="160" viewBox="0 0 620 160" role="img" aria-labelledby="title desc">
+  <title id="title">AfterClick horizontal logo</title>
+  <desc id="desc">AfterClick wordmark with compact path and gap mark.</desc>
+  <rect width="620" height="160" rx="0" fill="none"/>
+  <g transform="translate(28 32)">
+    <rect width="96" height="96" rx="23" fill="#101417"/>
+    <path d="M21 60C31 60 34 41 44 41C54 41 56 51 64 51C73 51 75 37 83 35" fill="none" stroke="#F7F8F5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="21" cy="60" r="6.2" fill="#F7F8F5"/>
+    <circle cx="83" cy="35" r="6.2" fill="#2FBF71"/>
+  </g>
+  <text x="148" y="89" fill="#101417" font-family="Inter, Geist, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="0">AfterClick</text>
+  <text x="151" y="119" fill="#5F6F74" font-family="IBM Plex Mono, Geist Mono, Menlo, monospace" font-size="13" font-weight="600" letter-spacing="2.4">REVENUE DIAGNOSTICS</text>
+</svg>
