@@ -3,8 +3,7 @@ pages_build_output_dir = "."
 compatibility_date = "2026-06-18"
 
 [vars]
-# Temporary live checkout test price. Revert to price_1TjhLmEbWnBWRyMCQHDtMpVi after the $1 end-to-end test.
-AFTERCLICK_REVENUE_MAP_PRICE_ID = "price_1Tjzt1EbWnBWRyMCROChu2cA"
+AFTERCLICK_REVENUE_MAP_PRICE_ID = "price_1TjhLmEbWnBWRyMCQHDtMpVi"
 AFTERCLICK_PUBLIC_BASE_URL = "https://after-click.com"
 AFTERCLICK_FROM_EMAIL = "AfterClick <updates@updates.after-click.com>"
 AFTERCLICK_REPLY_TO_EMAIL = "support@after-click.com"
