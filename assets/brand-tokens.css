@@ -391,6 +391,14 @@ h3 {
   padding: 28px;
 }
 
+.checkout-card-actions {
+  margin-top: 22px;
+}
+
+.checkout-card-actions .button {
+  width: 100%;
+}
+
 .field {
   margin-bottom: 18px;
 }
@@ -518,6 +526,10 @@ div.fine-print {
 span.fine-print {
   display: inline-block;
   margin-top: 4px;
+}
+
+.fine-print.checkout-payment-note {
+  margin-top: 22px;
 }
 
 .panel > :last-child,
