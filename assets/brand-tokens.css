@@ -215,9 +215,12 @@ h3 {
 }
 
 .mono {
+  display: block;
+  margin-bottom: 10px;
   font-family: var(--ac-font-mono);
   font-size: 12px;
   font-weight: 800;
+  line-height: 1.25;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -507,6 +510,23 @@ textarea {
   line-height: 1.55;
 }
 
+p.fine-print,
+div.fine-print {
+  margin: 16px 0 0;
+}
+
+span.fine-print {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.panel > :last-child,
+.card > :last-child,
+.result-box > :last-child,
+.simple-panel > :last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 940px) {
   .nav {
     min-height: auto;
@@ -536,6 +556,21 @@ textarea {
 
   h1 {
     font-size: clamp(42px, 15vw, 66px);
+  }
+
+  .simple-main h1 {
+    font-size: clamp(36px, 10vw, 46px);
+    line-height: 1.02;
+  }
+
+  .simple-panel h1 {
+    font-size: clamp(32px, 8.8vw, 38px);
+    line-height: 1.04;
+  }
+
+  .simple-main .lead {
+    font-size: 18px;
+    line-height: 1.48;
   }
 
   .choice-grid,

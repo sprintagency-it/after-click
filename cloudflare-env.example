@@ -9,3 +9,4 @@ AFTERCLICK_FROM_EMAIL="AfterClick <updates@updates.after-click.com>"
 AFTERCLICK_REPLY_TO_EMAIL=support@after-click.com
 AFTERCLICK_ADMIN_EMAIL=your_admin_inbox@example.com
 TALLY_INTAKE_URL=https://tally.so/r/2EVX9V
+TALLY_WEBHOOK_SECRET=generate-a-long-random-shared-secret

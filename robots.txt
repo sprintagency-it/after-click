@@ -1,3 +1,7 @@
+# AfterClick robots policy
+# Public pages should be crawlable. Operational funnel pages, APIs and parked diagnostics should not be indexed.
+# Search and user-triggered AI crawlers are allowed on public pages; broad training crawlers are blocked.
+
 User-agent: *
 Allow: /
 Disallow: /00_preview-hub.html
@@ -5,5 +9,95 @@ Disallow: /checkout/
 Disallow: /thank-you/
 Disallow: /leak-score/
 Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /00_preview-hub.html
+Disallow: /checkout/
+Disallow: /thank-you/
+Disallow: /leak-score/
+Disallow: /api/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
 
 Sitemap: https://after-click.com/sitemap.xml
