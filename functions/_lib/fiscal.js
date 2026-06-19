@@ -53,9 +53,15 @@ export function getCheckoutCustomFields(invoiceCase) {
     return [
       {
         key: "it_codice_fiscale_persona",
-        label: "CF se ditta individuale",
+        label: "CF ditta individuale",
         optional: true,
         maximumLength: 16
+      },
+      {
+        key: "it_sdi_pec",
+        label: "SDI o PEC",
+        optional: true,
+        maximumLength: 80
       }
     ];
   }
@@ -63,9 +69,17 @@ export function getCheckoutCustomFields(invoiceCase) {
   return [];
 }
 
-export function getCustomText(country) {
+export function getCustomText(country, invoiceCase) {
+  if (invoiceCase === "IT_BUSINESS") {
+    return "Per clienti italiani invieremo copia di cortesia della fattura via email. SDI/PEC non sono obbligatori; se vuoi puoi indicarli nel campo opzionale sopra.";
+  }
+
+  if (invoiceCase === "IT_INDIVIDUAL") {
+    return "Per clienti italiani invieremo copia di cortesia della fattura via email. Inserisci il codice fiscale nel campo richiesto.";
+  }
+
   if (normalizeCountry(country) === "IT") {
-    return "Per clienti italiani invieremo copia di cortesia della fattura via email. Non e' necessario inserire SDI o PEC.";
+    return "Per clienti italiani invieremo copia di cortesia della fattura via email.";
   }
 
   return "Use real billing details: we will issue the invoice based on the information entered here.";
@@ -106,6 +120,7 @@ export function classifyFinalOrPending(preliminaryCase, taxIds = []) {
 export function buildInvoiceInstructions(order) {
   const wording = "Servizio di consulenza operativa per diagnosi e ottimizzazione del percorso ecommerce post-click.";
   const finalCase = order.invoiceCaseFinalOrPending;
+  const customFields = order.customFields || {};
 
   if (finalCase === "IT_INDIVIDUAL") {
     return {
@@ -130,7 +145,9 @@ export function buildInvoiceInstructions(order) {
       notes: [
         "Usare ragione sociale/nome business e P.IVA/VAT ID raccolto da Stripe tax ID collection.",
         "Se presente it_codice_fiscale_persona, inserirlo come CF per ditta individuale/professionista.",
-        "Non chiediamo SDI/PEC: usare 0000000 e inviare copia di cortesia via email.",
+        customFields.it_sdi_pec
+          ? "Usare it_sdi_pec come SDI/PEC indicato dal cliente."
+          : "SDI/PEC non indicato: usare 0000000 e inviare copia di cortesia via email.",
         "Verificare bollo se importo sopra soglia applicabile."
       ]
     };
@@ -231,6 +248,7 @@ export function buildPaidOrderRow(order) {
     tax_id_value: firstTaxId.value || "",
     it_codice_fiscale: customFields.it_codice_fiscale || "",
     it_cf_ditta_individuale: customFields.it_codice_fiscale_persona || "",
+    it_sdi_pec: customFields.it_sdi_pec || "",
     codice_destinatario: instructions.codiceDestinatario || "",
     natura_iva_suggerita: instructions.vatNatureLikely || "",
     wording_fattura: instructions.wordingSuggestion || "",

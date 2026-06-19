@@ -251,6 +251,7 @@ export function buildAdminOrderEmail(env, order, row = {}, sheetSync = {}) {
     ["Invoice case preliminary", order.invoiceCasePreliminary || "-"],
     ["Invoice case final", order.invoiceCaseFinalOrPending || "-"],
     ["Tax IDs", formatTaxIds(order.taxIds)],
+    ["SDI/PEC", order.customFields?.it_sdi_pec || "-"],
     ["Custom fields", formatCustomFields(order.customFields)],
     ["Manual review", order.manualReview ? "yes" : "no"],
     ["Manual review reason", order.manualReviewReason || "-"],

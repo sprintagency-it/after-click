@@ -71,7 +71,7 @@ function buildCheckoutParams({ customerId, priceId, baseUrl, country, buyerType,
     billing_country_preselected: country,
     buyer_type_preselected: buyerType,
     invoice_case_preliminary: invoiceCase,
-    ask_sdi_pec: "false",
+    ask_sdi_pec: invoiceCase === "IT_BUSINESS" ? "true" : "false",
     requires_manual_review: manualReview ? "true" : "false",
     manual_review_reason: manualReview ? "san_marino" : ""
   };
@@ -87,7 +87,7 @@ function buildCheckoutParams({ customerId, priceId, baseUrl, country, buyerType,
     locale: "auto",
     success_url: `${baseUrl}/checkout/success/?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${baseUrl}/checkout/start/`,
-    "custom_text[submit][message]": getCustomText(country)
+    "custom_text[submit][message]": getCustomText(country, invoiceCase)
   };
 
   for (const [key, value] of Object.entries(metadata)) {
@@ -140,7 +140,7 @@ export async function onRequestPost({ request, env }) {
     billing_country_preselected: country,
     buyer_type_preselected: buyerType,
     invoice_case_preliminary: invoiceCase,
-    ask_sdi_pec: "false"
+    ask_sdi_pec: invoiceCase === "IT_BUSINESS" ? "true" : "false"
   };
 
   try {
