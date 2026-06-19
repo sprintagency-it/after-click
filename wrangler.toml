@@ -1,6 +1,7 @@
 name = "afterclick"
 pages_build_output_dir = "."
 compatibility_date = "2026-06-18"
+keep_vars = true
 
 [vars]
 # Temporary live checkout test price. Revert to price_1TjhLmEbWnBWRyMCQHDtMpVi after the $1 end-to-end test.
