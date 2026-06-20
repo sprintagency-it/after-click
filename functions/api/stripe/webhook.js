@@ -96,6 +96,8 @@ function buildPaidOrder(session) {
   const taxIds = normalizeTaxIds(customerDetails.tax_ids || []);
   const customFields = extractCustomFields(session.custom_fields || []);
   const preliminaryCase = metadata.invoice_case_preliminary || "UNKNOWN";
+  const precheckoutEmail = metadata.payment_email_precheckout || "";
+  const storeUrl = metadata.store_url || "";
   const finalCase = classifyFinalOrPending(preliminaryCase, taxIds);
   const manualReview = finalCase === "SAN_MARINO_MANUAL_REVIEW" || finalCase === "EU_B2B_VIES_INVALID_OR_MISSING";
 
@@ -108,8 +110,10 @@ function buildPaidOrder(session) {
     amountTotal: session.amount_total || 0,
     currency: String(session.currency || "").toUpperCase(),
     paymentStatus: session.payment_status || "",
-    customerEmail: customerDetails.email || "",
+    customerEmail: customerDetails.email || precheckoutEmail,
+    precheckoutEmail,
     customerName: customerDetails.name || "",
+    storeUrl,
     billingAddress: customerDetails.address || {},
     buyerTypePreselected: metadata.buyer_type_preselected || "",
     billingCountryPreselected: metadata.billing_country_preselected || "",

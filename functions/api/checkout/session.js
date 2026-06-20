@@ -63,10 +63,38 @@ function appendMetadata(params, prefix, values) {
   }
 }
 
-function buildCheckoutParams({ customerId, priceId, baseUrl, country, buyerType, invoiceCase }) {
+function normalizeEmail(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
+}
+
+function normalizeStoreUrl(value) {
+  const raw = String(value || "").trim();
+  if (!raw || raw.length > 500) return "";
+
+  const withScheme = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(raw) ? raw : `https://${raw}`;
+
+  try {
+    const url = new URL(withScheme);
+    if (!["http:", "https:"].includes(url.protocol)) return "";
+    if (url.username || url.password) return "";
+    if (!url.hostname || url.hostname.length < 3) return "";
+    url.hash = "";
+    return url.toString().slice(0, 500);
+  } catch {
+    return "";
+  }
+}
+
+function buildCheckoutParams({ customerId, priceId, baseUrl, country, buyerType, invoiceCase, paymentEmail, storeUrl }) {
   const manualReview = invoiceCase === "SAN_MARINO_MANUAL_REVIEW";
   const metadata = {
     product: "afterclick_revenue_map",
+    payment_email_precheckout: paymentEmail,
+    store_url: storeUrl,
     fiscal_model: FISCAL_MODEL,
     billing_country_preselected: country,
     buyer_type_preselected: buyerType,
@@ -122,8 +150,18 @@ export async function onRequestPost({ request, env }) {
 
   const priceId = env.AFTERCLICK_REVENUE_MAP_PRICE_ID || DEFAULT_PRICE_ID;
   const form = await request.formData();
+  const paymentEmail = normalizeEmail(form.get("paymentEmail"));
+  const storeUrl = normalizeStoreUrl(form.get("storeUrl"));
   const country = normalizeCountry(form.get("billingCountry"));
   const buyerType = String(form.get("buyerType") || "").trim();
+
+  if (!isValidEmail(paymentEmail)) {
+    return json({ error: "Enter a valid email for the report." }, 400);
+  }
+
+  if (!storeUrl) {
+    return json({ error: "Enter a valid public store URL." }, 400);
+  }
 
   if (!isValidCountryCode(country)) {
     return json({ error: "Select a valid billing country." }, 400);
@@ -136,6 +174,8 @@ export async function onRequestPost({ request, env }) {
   const invoiceCase = classifyPreliminary(country, buyerType);
   const metadata = {
     product: "afterclick_revenue_map",
+    payment_email_precheckout: paymentEmail,
+    store_url: storeUrl,
     fiscal_model: FISCAL_MODEL,
     billing_country_preselected: country,
     buyer_type_preselected: buyerType,
@@ -144,9 +184,12 @@ export async function onRequestPost({ request, env }) {
   };
 
   try {
-    const customer = await stripePost(env, "/v1/customers", Object.fromEntries(
+    const customerParams = Object.fromEntries(
       Object.entries(metadata).map(([key, value]) => [`metadata[${key}]`, value])
-    ));
+    );
+    customerParams.email = paymentEmail;
+
+    const customer = await stripePost(env, "/v1/customers", customerParams);
 
     const session = await stripePost(env, "/v1/checkout/sessions", buildCheckoutParams({
       customerId: customer.id,
@@ -154,7 +197,9 @@ export async function onRequestPost({ request, env }) {
       baseUrl: getBaseUrl(request, env),
       country,
       buyerType,
-      invoiceCase
+      invoiceCase,
+      paymentEmail,
+      storeUrl
     }));
 
     return new Response(null, {

@@ -43,11 +43,11 @@
         <section class="panel simple-panel">
           <div class="eyebrow">Payment received</div>
           <h1>Now send the context for your Revenue Map.</h1>
-          <p class="lead">We received the payment step. To produce a useful diagnosis, we still need your store URL, primary product, current offer, traffic source, ad angle and implementation constraints.</p>
+          <p class="lead">We received the payment step and the store URL attached to your order. To produce a useful diagnosis, complete the intake with your primary product, current offer, traffic source, ad angle and implementation constraints.</p>
 
           <div class="result-box score-high">
             <div class="mono">Required next step</div>
-            <p style="margin:10px 0 0;">Complete the intake with the same email used for payment. Delivery timing starts after the intake has enough context.</p>
+            <p style="margin:10px 0 0;">Complete the intake with the same email used for payment. Delivery timing starts after the full context is complete.</p>
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;">
@@ -69,6 +69,7 @@
         <div class="legal-admin">
           <span>P.IVA IT16566571002</span>
           <a href="mailto:support@after-click.com">support@after-click.com</a>
+          <a class="social-link" href="https://www.instagram.com/tryafterclick/" target="_blank" rel="noopener" aria-label="AfterClick on Instagram">Instagram</a>
         </div>
       </div>
     </footer>
@@ -78,12 +79,16 @@
         var intake = new URL("https://tally.so/r/2EVX9V");
         var sessionId = params.get("session_id") || "";
         var paymentEmail = params.get("payment_email") || params.get("customer_email") || "";
+        var storeUrl = params.get("store_url") || "";
 
         if (sessionId) {
           intake.searchParams.set("stripe_session_id", sessionId);
         }
         if (paymentEmail) {
           intake.searchParams.set("payment_email", paymentEmail);
+        }
+        if (storeUrl) {
+          intake.searchParams.set("store_url", storeUrl);
         }
         intake.searchParams.set("product", "afterclick_revenue_map");
         intake.searchParams.set("price_id", "price_1TjhLmEbWnBWRyMCQHDtMpVi");

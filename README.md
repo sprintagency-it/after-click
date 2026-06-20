@@ -64,6 +64,7 @@ Open `00_preview-hub.html` from this folder for local page-by-page review.
 
 - Stripe Checkout is implemented through Cloudflare Pages Functions but requires Cloudflare env vars/secrets before live testing.
 - The active V1 purchase route is direct order intent, not a fit application: landing CTA goes to `checkout/start/`, then to dynamic Stripe Checkout.
+- `checkout/start/` collects minimal pre-payment context: report email and store URL. These values prefill/attach to Stripe where possible, are stored in Stripe metadata and are written to Paid Orders after successful payment. No separate abandoned-checkout lead capture is created in this V1.
 - `checkout/request/` remains only as an emergency manual fallback and is not part of the active public flow.
 - The post-payment intake form is created and linked: `https://tally.so/r/2EVX9V`.
 - Tally is connected manually to Google Sheet `AfterClick Ops Tracker`, tab `Intake`; a test submission reaches the Sheet. Hidden-field pass-through should be verified during the first Stripe end-to-end test.
@@ -83,6 +84,7 @@ Open `00_preview-hub.html` from this folder for local page-by-page review.
 - The first FAQ entries are intentionally positive positioning FAQs, not only objection handling.
 - Legal pages are review-ready operational drafts, not final legal advice.
 - Meta Pixel ID `1677975296859006` is installed through the consent manager. PageView and configured funnel events load only after measurement/advertising consent.
+- Footer and AI-readable discovery files include the official Instagram profile: `https://www.instagram.com/tryafterclick/`.
 
 ## QA status
 

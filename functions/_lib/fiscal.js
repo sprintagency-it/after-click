@@ -257,7 +257,7 @@ export function buildPaidOrderRow(order) {
     invoice_number: "",
     intake_completed: "false",
     tally_submission_id: "",
-    store_url: "",
+    store_url: order.storeUrl || "",
     notes: (instructions.notes || []).join(" | ")
   };
 }

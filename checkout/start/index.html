@@ -44,7 +44,7 @@
         <section>
           <div class="eyebrow">Checkout start</div>
           <h1>Start your AfterClick Revenue Map order.</h1>
-          <p class="lead">Choose your billing country and whether you are buying personally or as a business. This prepares the correct payment and invoice route before the payment step.</p>
+          <p class="lead">Tell us which store the map is for, then choose the billing route before the secure Stripe payment step.</p>
           <div class="card" style="margin-top:24px;">
             <h3>AfterClick Revenue Map</h3>
             <div class="price-line"><strong>$299</strong><span class="muted">founder price</span></div>
@@ -62,6 +62,23 @@
 
         <section class="panel form-card">
           <form id="billingForm" action="/api/checkout/session" method="post">
+            <div class="field">
+              <div class="mono">Start with your store</div>
+              <p class="fine-print" style="margin-top:10px;">Add the email and store URL for this order. After payment, the full intake will collect the offer, traffic and implementation details.</p>
+            </div>
+
+            <div class="field">
+              <label for="paymentEmail">Email for the report</label>
+              <input id="paymentEmail" name="paymentEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required>
+              <p class="fine-print">Stripe will use this email for checkout and we will use it to match your order, intake and delivery.</p>
+            </div>
+
+            <div class="field">
+              <label for="storeUrl">Store URL to review</label>
+              <input id="storeUrl" name="storeUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://yourstore.com" required>
+              <p class="fine-print">A first store reference only. The post-payment intake will collect the full context, offer and traffic details.</p>
+            </div>
+
             <div class="field">
               <label for="billingCountry">Billing country</label>
               <select id="billingCountry" name="billingCountry" required>
@@ -101,7 +118,7 @@
                   <option value="SM">San Marino (SM)</option>
                 </optgroup>
               </select>
-              <p class="fine-print">The payment step will collect name, email, billing address and payment details.</p>
+              <p class="fine-print">The payment step will confirm name, billing address and payment details for invoice records.</p>
             </div>
 
             <div class="field">
@@ -137,6 +154,7 @@
         <div class="legal-admin">
           <span>P.IVA IT16566571002</span>
           <a href="mailto:support@after-click.com">support@after-click.com</a>
+          <a class="social-link" href="https://www.instagram.com/tryafterclick/" target="_blank" rel="noopener" aria-label="AfterClick on Instagram">Instagram</a>
         </div>
       </div>
     </footer>

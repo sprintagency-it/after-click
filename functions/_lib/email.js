@@ -173,6 +173,7 @@ export function buildIntakeUrl(env, order) {
 
   if (order?.stripeSessionId) intakeUrl.searchParams.set("stripe_session_id", order.stripeSessionId);
   if (order?.customerEmail) intakeUrl.searchParams.set("payment_email", order.customerEmail);
+  if (order?.storeUrl) intakeUrl.searchParams.set("store_url", order.storeUrl);
   intakeUrl.searchParams.set("product", "afterclick_revenue_map");
   intakeUrl.searchParams.set("price_id", env.AFTERCLICK_REVENUE_MAP_PRICE_ID || "price_1TjhLmEbWnBWRyMCQHDtMpVi");
   intakeUrl.searchParams.set("source", "order_email");
@@ -193,6 +194,7 @@ export function buildBuyerOrderEmail(env, order) {
     "Thanks for ordering your AfterClick Revenue Map.",
     "",
     `Payment received: ${amount}`,
+    order.storeUrl ? `Store attached to this order: ${order.storeUrl}` : "",
     "",
     "The next step is to complete the intake form so we can review the right store, offer, traffic context and implementation constraints.",
     "",
@@ -218,6 +220,7 @@ export function buildBuyerOrderEmail(env, order) {
       greeting,
       "Thanks for ordering your AfterClick Revenue Map.",
       `Payment received: ${amount}`,
+      order.storeUrl ? `Store attached to this order: ${order.storeUrl}` : "",
       "The next step is to complete the intake form so we can review the right store, offer, traffic context and implementation constraints.",
       "If you already completed the intake from the success page, you can ignore this step.",
       "Delivery timing starts after the intake is complete. Current delivery window: 48-72 hours after we have the context we need.",
@@ -242,6 +245,7 @@ export function buildAdminOrderEmail(env, order, row = {}, sheetSync = {}) {
     ["Amount", amount],
     ["Name", order.customerName || "-"],
     ["Email", order.customerEmail || "-"],
+    ["Store URL", order.storeUrl || row.store_url || "-"],
     ["Stripe session", order.stripeSessionId],
     ["Payment intent", order.stripePaymentIntentId || "-"],
     ["Stripe customer", order.stripeCustomerId || "-"],
